@@ -44,7 +44,7 @@ class Simpy:
         """This returns the sum of all items in values."""
         return sum(self.values)
     
-    def __add__(self, rhs: Union[float, Simpy]):
+    def __add__(self, rhs: Union[float, Simpy]) -> Simpy:
         """Allows for the use of addition operator."""
         result: Simpy = Simpy([])
         if isinstance(rhs, float):
@@ -59,7 +59,7 @@ class Simpy:
             raise TypeError("Unsupported operand type for +")
         return result
 
-    def __pow__(self, rhs: Union[float, "Simpy"]) -> "Simpy":
+    def __pow__(self, rhs: Union[float, Simpy]) -> Simpy:
         """Allows for the use of power operator."""
         result: Simpy = Simpy([])
         if isinstance(rhs, float):
@@ -74,7 +74,7 @@ class Simpy:
             raise TypeError("Unsupported operand type for **")
         return result
 
-    def __eq__(self, rhs: Union[float, 'Simpy']) -> list[bool]:
+    def __eq__(self, rhs: Union[float, Simpy]) -> list[bool]:
         """Allows you to set things equal to one another."""
         result: list[bool] = []
         if isinstance(rhs, Simpy):
@@ -92,7 +92,7 @@ class Simpy:
                     result.append(False)
         return result
     
-    def __gt__(self, rhs: Union[float, 'Simpy']) -> list[bool]:
+    def __gt__(self, rhs: Union[float, Simpy]) -> list[bool]:
         """Tests for the greater than opertaor."""
         result: list[bool] = []
         if isinstance(rhs, float):
@@ -110,7 +110,7 @@ class Simpy:
                     result.append(False)
         return result
     
-    def __getitem__(self, rhs: Union[int, list[bool]]) -> Union[float, 'Simpy']:
+    def __getitem__(self, rhs: Union[int, list[bool]]) -> Union[float, Simpy]:
         """Allows for subscription notation."""
         if isinstance(rhs, int):
             for i in range(len(self.values)):
